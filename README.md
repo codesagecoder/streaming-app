@@ -11,10 +11,11 @@ Might be slow on initial load.
 2. cd into the `/server` folder and Insall all the dependencies using `npm i` command
 3. Create a .env file with key `SECRET_KEY = YOUR_OWN_SECRET` for jwt authentication
 4. In the .env, you may if you have a mongodb database, setup another key `MONGO_URL = URL_TO_YOUR_DATABASE`
-5. Launch the server with `npm start` command. The server will launch on port 8080.
+5. If not using mongodb cloud then download mongodb and install to run mongodb locally (instructions are on mongodb site)
+6. Launch the server with `npm start` command. The server will launch on port 8080.
 
-6. cd back into downloaded directory then cd into `/client` folder and Insall all the dependencies using `npm i` command
-7. Launch client side with `npm start` command, localhost:3000 will automatically open up in browser.
+7. cd back into downloaded directory then cd into `/client` folder and Insall all the dependencies using `npm i` command
+8. Launch client side with `npm start` command, localhost:3000 will automatically open up in browser.
 #### Without any data in database there will not be anything rendered on screen(it will be a blank screen)
 
 ## Features
