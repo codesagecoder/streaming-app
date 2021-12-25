@@ -1,0 +1,76 @@
+@import "../../app.scss";
+
+.login {
+  @include weird{
+    height: 900px;
+  }
+  height: 100vh;
+  overflow: hidden;
+  width: 100vw;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    ),
+    url('https://firebasestorage.googleapis.com/v0/b/firstapp-f0082.appspot.com/o/748359.jpg?alt=media&token=6860a5fb-83b6-4ee2-8d5e-3731c9764d7b');
+    background-size: cover;
+    background-position: center center;
+  .logo {
+        padding: 20px 50px;
+        height: 40px;
+      }
+
+  .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+    form {
+      @include mobile {
+        width:65%;
+      }
+      width: 300px;
+      height: 300px;
+      padding: 30px;
+      border-radius: 5px;
+      background-color: var(--main-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      input {
+        height: 40px;
+        border-radius: 5px;
+        background-color: gray;
+        color: white;
+        padding-left: 10px;
+
+        &::placeholder {
+          color: lightgray;
+        }
+      }
+
+      button {
+        height: 40px;
+        border-radius: 5px;
+        background-color: red;
+        color: white;
+        border: none;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+
+      span {
+        color: lightgray;
+        b {
+          color: white;
+        }
+      }
+    }
+  }
+}
