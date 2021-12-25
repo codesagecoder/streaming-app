@@ -1,4 +1,4 @@
-## MERN video (movies/series) streaming app
+## MERN streaming (movies/series) app
 A streaming web app, similar to Netflix. 
 
 ## Demo
