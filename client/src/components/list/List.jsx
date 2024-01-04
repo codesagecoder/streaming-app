@@ -1,7 +1,7 @@
 import {
   ArrowBackIosOutlined,
   ArrowForwardIosOutlined,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import { useEffect, useRef, useState } from "react";
 import ListItem from "../listItem/ListItem";
 import "./list.scss";
@@ -16,7 +16,7 @@ export default function List({ list }) {
   useEffect(() => {
     let resizeWindow = () => {
       setWindowWidth(window.innerWidth);
-      setClickLimit( window.innerWidth/ 230);
+      setClickLimit(window.innerWidth / 230);
     };
     window.addEventListener("resize", resizeWindow);
     return () => window.removeEventListener("resize", resizeWindow);

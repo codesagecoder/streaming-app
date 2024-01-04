@@ -1,24 +1,24 @@
 @import "../../app.scss";
 
 .login {
-  @include weird{
+  @include weird {
     height: 900px;
   }
+
   height: 100vh;
   overflow: hidden;
   width: 100vw;
-  background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 1) 100%
-    ),
-    url('https://firebasestorage.googleapis.com/v0/b/firstapp-f0082.appspot.com/o/748359.jpg?alt=media&token=6860a5fb-83b6-4ee2-8d5e-3731c9764d7b');
-    background-size: cover;
-    background-position: center center;
+  background: linear-gradient(to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 100%),
+  url('../../assets/za-en-20240101-netflix.jpg');
+  background-size: cover;
+  background-position: center center;
+
   .logo {
-        padding: 20px 50px;
-        height: 40px;
-      }
+    padding: 20px 50px;
+    height: 40px;
+  }
 
   .container {
     width: 100%;
@@ -31,22 +31,29 @@
 
     form {
       @include mobile {
-        width:65%;
+        width: 65%;
       }
+
       width: 300px;
-      height: 300px;
       padding: 30px;
       border-radius: 5px;
-      background-color: var(--main-color);
+      // background-color: var(--main-color);
+      background-color: rgb(0, 0, 0, .75);
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: flex-end;
+      gap: 8px;
+
+      input, button {
+        height: 40px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        color: white;
+      }
 
       input {
-        height: 40px;
-        border-radius: 5px;
-        background-color: gray;
-        color: white;
+        background: #333;
         padding-left: 10px;
 
         &::placeholder {
@@ -55,18 +62,19 @@
       }
 
       button {
-        height: 40px;
-        border-radius: 5px;
         background-color: red;
-        color: white;
-        border: none;
-        font-size: 18px;
+        font-size: 1.125rem;
         font-weight: 500;
         cursor: pointer;
+
+        &.demoButton {
+          background-color: rgb(247, 0, 255);
+        }
       }
 
       span {
         color: lightgray;
+
         b {
           color: white;
         }

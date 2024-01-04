@@ -1,10 +1,10 @@
 import {
   ArrowDropDown,
+  Dehaze,
   Notifications,
   Search,
-  Dehaze,
-} from "@material-ui/icons";
-import { useEffect, useContext, useState } from "react";
+} from "@mui/icons-material";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { logout } from "../../authContext/AuthActions";
 import { AuthContext } from "../../authContext/AuthContext";

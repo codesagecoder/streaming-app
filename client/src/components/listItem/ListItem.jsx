@@ -1,13 +1,13 @@
-import "./listItem.scss";
 import {
-  PlayArrow,
   Add,
-  ThumbUpAltOutlined,
+  PlayArrow,
   ThumbDownOutlined,
-} from "@material-ui/icons";
-import { useEffect, useState } from "react";
+  ThumbUpAltOutlined,
+} from "@mui/icons-material";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import "./listItem.scss";
 
 
 export default function ListItem({ index, item, slideNumber }) {

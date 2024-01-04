@@ -1,11 +1,11 @@
-import Navbar from "../../components/navbar/Navbar";
-import Featured from "../../components/featured/Featured";
-import "./home.scss";
-import List from "../../components/list/List";
-import { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import { logout } from "../../authContext/AuthActions";
 import { AuthContext } from "../../authContext/AuthContext";
+import Featured from "../../components/featured/Featured";
+import List from "../../components/list/List";
+import Navbar from "../../components/navbar/Navbar";
+import "./home.scss";
 
 const Home = ({ type, user }) => {
   const [lists, setLists] = useState([]);
@@ -16,8 +16,7 @@ const Home = ({ type, user }) => {
     const getRandomLists = async () => {
       try {
         const res = await axios.get(
-          `/api/lists${type ? "?type=" + type : ""}${
-            genre ? "&genre=" + genre : ""
+          `/api/lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""
           }`,
           {
             headers: {

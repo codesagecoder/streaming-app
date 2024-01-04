@@ -1,34 +1,34 @@
-import { InfoOutlined, PlayArrow } from "@material-ui/icons";
-import { useState, useEffect } from "react";
+import { InfoOutlined, PlayArrow } from "@mui/icons-material";
 import axios from "axios";
-import "./featured.scss";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import "./featured.scss";
 
 
 
 export default function Featured({ type, setGenre }) {
-  
+
   const [content, setContent] = useState({});
-  
+
   useEffect(() => {
     const getRandomContent = async () => {
       try {
         let res
-        if(type){
-           res= await axios.get(`/api/movies/random?type=${type}`, {
+        if (type) {
+          res = await axios.get(`/api/movies/random?type=${type}`, {
             headers: {
               token:
                 "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
             },
           });
-        }else{
-          res= await axios.get(`/api/movies/random?type=${type}`, {
+        } else {
+          res = await axios.get(`/api/movies/random?type=${type}`, {
             headers: {
               token:
                 "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
             }
           });
-  
+
         }
         setContent(res.data[0]);
       } catch (err) {
@@ -67,22 +67,22 @@ export default function Featured({ type, setGenre }) {
           </select>
         </div>
       )} */}
-      
+
       <img
-      className='back-image'
-          src={content.img}
-          alt=""
-        />
+        className='back-image'
+        src={content.img}
+        alt=""
+      />
       <div className="info">
         <img src={content.imgTitle} alt="" />
         <span className="desc">{content.desc}</span>
         <div className="buttons">
-            <Link className='link' to={{ pathname: "/watch", movie: content }}>
-          <button className="play">
+          <Link className='link' to={{ pathname: "/watch", movie: content }}>
+            <button className="play">
               <PlayArrow />
               <span>Play</span>
-          </button>
-            </Link>
+            </button>
+          </Link>
           <button className="more">
             <InfoOutlined />
             <span>Info</span>

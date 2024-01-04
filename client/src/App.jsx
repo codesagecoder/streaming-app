@@ -1,45 +1,38 @@
-import "./app.scss";
+import { useContext } from "react";
+import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import './App.scss';
+import { AuthContext } from './authContext/AuthContext';
 import Home from "./pages/home/Home";
+import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Watch from "./pages/watch/Watch";
-import Login from "./pages/login/Login";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from './authContext/AuthContext'
 
-const App = () => {
-  const {user} = useContext(AuthContext);
-  // const user = JSON.parse(localStorage.getItem("user"))
+function App() {
+  const { user } = useContext(AuthContext);
+
   return (
-    <Router>
-      <Switch>
-        <Route path="/register">
-          {!user ? <Register /> : <Redirect to="/" />}
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Router to='/login' allow={!!user} />}>
+          <Route path="/" element={<Home user={user} />} />
+          <Route path="/movies" element={<Home type="movie" user={user} />} />
+          <Route path="/series" element={<Home type="series" user={user} />} />
+          <Route path="/watch" element={<Watch />} />
         </Route>
-        <Route path="/login">{!user ? <Login /> : <Redirect to="/" />}</Route>
-        <Route exact path="/">{user ? <Home user={user} /> : <Redirect to="/register" />}</Route>
-        {user && (
-          <>
-            <Route path="/movies">
-             
-              <Home type="movie" user={user} />
-            </Route>
-            <Route path="/series">
-              <Home type="series" user={user} />
-            </Route>
-            <Route path="/watch">
-              <Watch />
-            </Route>
-          </>
-        )}
-      </Switch>
-    </Router>
+
+        <Route element={<Router to='/' allow={!user} />}>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
-};
+}
+
+function Router({ allow, to }) {
+  return (
+    allow ? <Outlet /> : <Navigate to={to} />
+  );
+}
 
 export default App;

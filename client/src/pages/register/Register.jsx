@@ -1,14 +1,15 @@
 import axios from "axios";
-import { useRef } from "react";
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import logo from '../../assets/logo.png';
 import "./register.scss";
 
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const history = useHistory();
+  const nav = useNavigate();
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -23,7 +24,7 @@ export default function Register() {
     setUsername(usernameRef.current.value);
     try {
       await axios.post("/api/auth/register", { email, password, username });
-      history.push("/login");
+      nav('/login');
     } catch (err) {
       console.log(err);
     }
@@ -31,17 +32,17 @@ export default function Register() {
   return (
     <div className="register">
       <div className="top">
-          <img
-            className="logo"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
-            alt=""
-          />
-          <button
-            onClick={() => history.push("/login")}
-            className="loginButton"
-          >
-            Sign In
-          </button>
+        <img
+          className="logo"
+          src={logo}
+          alt=""
+        />
+        <button
+          onClick={() => nav('/login')}
+          className="loginButton"
+        >
+          Sign In
+        </button>
       </div>
       <div className="container">
         <h1>Unlimited movies, TV shows, and more.</h1>
