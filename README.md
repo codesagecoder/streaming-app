@@ -1,31 +1,31 @@
-## MERN streaming (movies/series) app
-A streaming web app, similar to Netflix. 
+## MERN Stack Streaming App
+A simple streaming web app.
+### Demo [Here](https://google.com).
 
-## Demo
-Live demo hosted on heroku, [stream-all.herokuapp.com](https://stream-all.herokuapp.com/).
-Might be slow on initial load.
-
-## How to run the App
+## How To Run
 #### Must have nodejs with npm installed (preferrably latest version).
-1. Download/clone the repository and open the folder in the cli
-2. cd into the `/server` folder and Insall all the dependencies using `npm i` command
-3. Create a .env file with key `SECRET_KEY = YOUR_OWN_SECRET` for jwt authentication
-4. In the .env, you may if you have a mongodb database, setup another key `MONGO_URL = URL_TO_YOUR_DATABASE`
-5. If not using mongodb cloud then download mongodb and install to run mongodb locally (instructions are on mongodb site)
-6. Launch the server with `npm start` command. The server will launch on port 8080.
+1. Download/clone the repository.
 
-7. cd back into downloaded directory then cd into `/client` folder and Insall all the dependencies using `npm i` command
-8. Launch client side with `npm start` command, localhost:3000 will automatically open up in browser.
-#### Without any data in database there will not be anything rendered on screen(it will be a blank screen)
+2. Open a cli in the `api` folder and install all the dependencies using `npm i` command.
+3. Run `npm run dev` to launch the server.
+4. Open a new cli in the `client` folder and install all the dependencies using `npm i` command.
+5. Launch client side with `npm start` command, browser will automatically launch.
+
+#### Environment values within the server (.env):
+| Variable    | Description |
+|-------------| ----------- |
+| SECRET_KEY  | jwt secret key|
+| MONGO_URL   | mongodb database uri|
+| PORT   | your prefferred port|
+
 
 ## Features
 - REST api
 - Register and Login system
 - Fully responsive
-- JWT for session storage and authentication
-- Via [admin](https://github.com/codesagecoder/streaming-app-admin), firebase storage bucket
+- JWT for managed session authentication
 - State management with react context
-- fully functioning carousel for navigation
+- No library/dependency based carousel
 
 ## Tools/Dependencies
 - react
@@ -34,4 +34,5 @@ Might be slow on initial load.
 - express
 - sass
 - JWT
-- cors
+
+#### NOTE: Additional setup is required via the [admin](https://github.com/codesagecoder/streaming-app-admin), dashboard.

@@ -13,21 +13,14 @@ app.use(cors());
 app.use(express.json());
 
 
-mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost:27017/stream-app',
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useCreateIndex: true,
-        useFindAndModify: false
-    })
-    .then(() => { console.log('connected to mongodb'); })
-    .catch((e) => { console.log("Something went wrong", e) })
+mongoose.connect(process.env.MONGO_URL).then((res) => {
+    console.log(`DATABASE: connected to "${res.connection.host}:${res.connection.port}/${res.connection.name}"`);
+}).catch(console.log);
 
 app.use("/api/auth", authRoute);
 app.use('/api/users', userRoute);
 app.use('/api/movies', movieRoute);
 app.use('/api/lists', listRoute);
 
-app.listen(process.env.PORT || 8080, () => {
-    console.log('server is Up!!')
-})
+const port = process.env.PORT ?? 3001;
+app.listen(port, () => console.log(`SERVER: running on port ${port}`));
