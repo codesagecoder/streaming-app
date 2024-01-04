@@ -1,34 +1,40 @@
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../authContext/AuthContext";
+import { login } from "../../authContext/apiCalls";
 
 import logo from '../../assets/logo.png';
 import "./register.scss";
 
 export default function Register() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
   const nav = useNavigate();
+  const [email, setEmail] = useState("");
+  const { dispatch } = useContext(AuthContext);
 
   const emailRef = useRef();
   const passwordRef = useRef();
   const usernameRef = useRef();
 
   const handleStart = () => {
-    setEmail(emailRef.current.value);
+    if (emailRef.current.value) setEmail(emailRef.current.value);
   };
+
   const handleFinish = async (e) => {
     e.preventDefault();
-    setPassword(passwordRef.current.value);
-    setUsername(usernameRef.current.value);
+    const username = usernameRef.current.value;
+    const password = passwordRef.current.value;
+
     try {
+      if (!username && !password) throw Error('Missing fields');
+
       await axios.post("/api/auth/register", { email, password, username });
-      nav('/login');
+      login({ email, password }, dispatch);
     } catch (err) {
       console.log(err);
     }
   };
+
   return (
     <div className="register">
       <div className="top">

@@ -12,25 +12,31 @@ export default function Login() {
   const { dispatch } = useContext(AuthContext)
 
 
-  function handleLogin(e){
+  function handleLogin(e) {
     e.preventDefault();
-  login({email,password}, dispatch)
+    if (!email && !password) return;
+    login({ email, password }, dispatch)
   }
+
+  function handleDemoLogin() {
+    login({ email: 'test@mail.com', password: 'j&IoS&@R*1d5Ql5!' }, dispatch);
+  }
+
   return (
     <div className="login">
-          <img
-            className="logo"
-            src={logo}
-            alt=""
-          />
-      
+      <img
+        className="logo"
+        src={logo}
+        alt=""
+      />
+
       <div className="container">
         <form>
           <h1>Sign In</h1>
-          <input type="email" placeholder="Email or phone number" onChange={e=>setEmail(e.target.value)}/>
-          <input type="password" placeholder="Password" onChange={e=>setPassword(e.target.value)} />
+          <input type="email" placeholder="Email or phone number" onChange={e => setEmail(e.target.value)} />
+          <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
           <button onClick={handleLogin}>Sign In</button>
-          <button type="button" className="demoButton" onClick={()=>{}}>Demo User</button>
+          <button type="button" className="demoButton" onClick={handleDemoLogin}>Demo User</button>
           <span>
             New to Netflix? <Link to="/register"><b>Sign up now.</b></Link>
           </span>

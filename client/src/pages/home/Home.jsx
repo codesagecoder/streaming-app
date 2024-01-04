@@ -33,12 +33,12 @@ const Home = ({ type, user }) => {
     };
     getRandomLists();
   }, [type, genre, user.accessToken, dispatch]);
+
   return (
     <div className="home">
-      {lists.length > 0 && [
-        <Navbar key={0} />,
-        <Featured key={1} type={type} setGenre={setGenre} />,
-      ]}
+      < Navbar />
+      <Featured type={type} setGenre={setGenre} />
+
       {lists.map((list, i) => (
         <List list={list} key={i} />
       ))}
