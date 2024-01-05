@@ -77,7 +77,7 @@ export default function Featured({ type, setGenre }) {
         <img src={content.imgTitle} alt="" />
         <span className="desc">{content.desc}</span>
         <div className="buttons">
-          <Link className='link' to={{ pathname: "/watch", movie: content }}>
+          <Link className='link' to="/watch" state={content}>
             <button className="play">
               <PlayArrow />
               <span>Play</span>

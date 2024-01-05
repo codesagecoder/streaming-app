@@ -4,19 +4,16 @@ import "./watch.scss";
 
 export default function Watch() {
   const location = useLocation();
-  const movie = location.movie;
+  const movie = location.state;
+
   return (
     <div className="watch">
-      <Link to="/">
-        <div className="back">
-          <ArrowBackOutlined />
-          Home
-        </div>
+      <Link to="/" className="back">
+        <ArrowBackOutlined /> Home
       </Link>
       <video
         className="video"
         autoPlay
-        progress
         controls
         src={movie.video}
       />

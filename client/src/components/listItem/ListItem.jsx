@@ -75,7 +75,7 @@ export default function ListItem({ index, item, slideNumber }) {
           <video src={movie.trailer} autoPlay={true} loop muted />
           <div className="itemInfo">
             <div className="icons">
-              <Link className="link" to={{ pathname: "/watch", movie: movie }}>
+              <Link className="link" to="/watch" state={movie}>
                 <PlayArrow className="icon" />
               </Link>
               <Add className="icon" />
