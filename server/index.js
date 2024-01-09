@@ -22,5 +22,12 @@ app.use('/api/users', userRoute);
 app.use('/api/movies', movieRoute);
 app.use('/api/lists', listRoute);
 
+/* PRODUCTION */
+const adminDir = path.join(__dirname, "apps/admin/");
+app.use('/admin', express.static(adminDir), (_, res) => res.sendFile(adminDir + 'index.html'));
+
+const clientDir = path.join(__dirname, "apps/client/");
+app.use('/client', express.static(clientDir), (_, res) => res.sendFile(clientDir + 'index.html'));
+
 const port = process.env.PORT ?? 3001;
 app.listen(port, () => console.log(`SERVER: running on port ${port}`));
