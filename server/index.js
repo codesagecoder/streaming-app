@@ -21,6 +21,7 @@ app.use("/api/auth", authRoute);
 app.use('/api/users', userRoute);
 app.use('/api/movies', movieRoute);
 app.use('/api/lists', listRoute);
+app.use('/api', (_,res)=>res.sendStatus(404));
 
 /* PRODUCTION */
 const adminDir = path.join(__dirname, "apps/admin/");
